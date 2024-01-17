@@ -3,8 +3,6 @@
 
 This app demonstrates a cloud platform built with DevExtreme, React, and TypeScript. 
 
-Currently, two official plugins are available:
-
 ### To Run
 ```
 clone repository
