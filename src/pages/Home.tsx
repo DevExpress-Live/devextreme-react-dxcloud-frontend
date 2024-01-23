@@ -13,7 +13,7 @@ const Home = () => {
           <h1>DxCloud</h1>
           <h3 className="text-2xl text-gray-300">Personal cloud computing made simple</h3>
           <br />
-          <h3 className="text-gray-300">VPS | Cloud Storage | Site Hosting</h3>
+          <h3 className="text-gray-300">Virtual Machines | Cloud Storage | Web Hosting</h3>
           <div className="mt-2 flex justify-center gap-x-6">
             <Button
               text="Get Started"
