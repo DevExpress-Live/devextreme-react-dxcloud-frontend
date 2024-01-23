@@ -43,15 +43,21 @@ const Navbar = () => {
         />
         <Item
           widget="dxButton"
-          location="after"
+          location="before"
           locateInMenu="auto"
-          options={logInOptions}
+          options={aboutOptions}
         />
         <Item
           widget="dxButton"
           location="before"
           locateInMenu="auto"
-          options={aboutOptions}
+          options={contactOptions}
+        />
+        <Item
+          widget="dxButton"
+          location="after"
+          locateInMenu="auto"
+          options={logInOptions}
         />
       </Toolbar>
     </div>
@@ -65,6 +71,11 @@ const homeOptions = {
 
 const aboutOptions = {
   text: 'About',
+  stylingMode: 'text',
+};
+
+const contactOptions = {
+  text: 'Contact',
   stylingMode: 'text',
 };
 
