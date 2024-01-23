@@ -10,6 +10,8 @@ const Navbar = () => {
     if (e.itemData?.options.text) {
       if (e.itemData.options.text !== 'Home') {
         navigate(`/${e.itemData.options.text.toLowerCase()}`);
+      } else {
+        navigate('/');
       }
     } else {
       navigate('/');
@@ -29,6 +31,12 @@ const Navbar = () => {
             <h1 className="pr-2">DxCloud</h1>
           </Link>
         </Item>
+        <Item
+          widget="dxButton"
+          location="before"
+          locateInMenu="auto"
+          options={homeOptions}
+        />
         <Item
           widget="dxButton"
           location="before"
