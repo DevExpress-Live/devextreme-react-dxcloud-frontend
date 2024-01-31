@@ -3,9 +3,10 @@ import { useNavigate } from "react-router-dom";
 import { Drawer } from "devextreme-react/drawer";
 import { Toolbar } from "devextreme-react/toolbar";
 import List from 'devextreme-react/list';
+import { ItemClickEvent } from "devextreme/ui/list";
 
 const navigation = [
-  { id: 1, text: "Dashboard", icon: "home", path: "/" },
+  { id: 1, text: "Dashboard", icon: "home", path: "/dashboard" },
   { id: 2, text: "Profile", icon: "user", path: "/dashboard/profile" },
   { id: 3, text: "Cloud Storage", icon: "product", path: "/dashboard/cloud-storage" },
   { id: 4, text: "Virtual Machines", icon: "product", path: "/dashboard/vms" },
@@ -73,6 +74,7 @@ const Dashboard = () => {
 }
 
 const NavigationMenu = () => {
+  const navigate = useNavigate();
   return (
     <div className="bg-[#141e28] min-h-full" style={{ width: '250px' }}>
       <List
@@ -81,6 +83,7 @@ const NavigationMenu = () => {
         activeStateEnabled={false}
         focusStateEnabled={false}
         className="text-xl"
+        onItemClick={(e: ItemClickEvent) => navigate(e.itemData.path)}
       />
     </div>
   )
