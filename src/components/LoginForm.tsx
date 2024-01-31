@@ -30,7 +30,7 @@ const LoginForm = () => {
       const data = await response.json();
       if (data.success) {
         localStorage.setItem("token", data.token);
-        navigate("/");
+        navigate("/dashboard");
       } else {
         notify({
           message: data.message,
