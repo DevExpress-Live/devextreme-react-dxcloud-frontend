@@ -1,23 +1,25 @@
-import React, { useState, useMemo, useCallback } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState, useMemo, useRef, useCallback } from "react";
+import { useNavigate, Link, Outlet } from "react-router-dom";
 import { Drawer } from "devextreme-react/drawer";
 import { Toolbar } from "devextreme-react/toolbar";
 import List from 'devextreme-react/list';
-import { ItemClickEvent } from "devextreme/ui/list";
+
+import "./dashboard.css";
 
 const navigation = [
   { id: 1, text: "Dashboard", icon: "home", path: "/dashboard" },
   { id: 2, text: "Profile", icon: "user", path: "/dashboard/profile" },
   { id: 3, text: "Cloud Storage", icon: "product", path: "/dashboard/cloud-storage" },
-  { id: 4, text: "Virtual Machines", icon: "product", path: "/dashboard/vms" },
+  { id: 4, text: "Virtual Machines", icon: "product", path: "/dashboard/virtual-machines" },
   { id: 5, text: "Web Hosting", icon: "product", path: "/dashboard/web-hosting" },
   { id: 6, text: "Support", icon: "info", path: "/dashboard/support" },
 ];
 
 const Dashboard = () => {
   const navigate = useNavigate();
+
   const [opened, setOpened] = useState(true);
-  const windowSize = React.useRef([window.innerWidth, window.innerHeight]);
+  const windowSize = useRef([window.innerWidth, window.innerHeight]);
 
   const logout = useCallback(() => {
     localStorage.removeItem('token');
@@ -54,36 +56,56 @@ const Dashboard = () => {
         onClick: () => logout(),
       },
     }
-  ], [opened, setOpened, logout, navigate]);
+  ], [opened, logout, navigate]);
 
   return (
     <div className="">
       <Toolbar items={toolbarItems} className="shadow-md" />
       <Drawer
+        component={NavigationMenu}
         opened={opened}
-        openedStateMode="overlap"
-        revealMode="slide"
+        openedStateMode="push"
+        revealMode="expand"
         position="left"
         height={windowSize.current[1]}
-        component={NavigationMenu}
         className="bg-[#16232e]"
       >
+        <Outlet />
       </Drawer>
     </div>
   );
 }
 
 const NavigationMenu = () => {
-  const navigate = useNavigate();
+  type Data = {
+    id: number;
+    path: string;
+    text: string;
+    icon: string;
+  }
+
+  const renderItem = useCallback((data: Data) => {
+    return (
+      <div>
+        <Link to={data.path} reloadDocument>
+          <div>
+            <div className="dx-list-item-icon-container">
+              <i className={`dx-icon dx-list-item-icon dx-icon-${data.icon}`} />
+            </div>
+            <span className="text-white">{data.text}</span>
+          </div>
+        </Link>
+      </div>
+    );
+  }, []);
   return (
     <div className="bg-[#141e28] min-h-full" style={{ width: '250px' }}>
       <List
-        dataSource={navigation}
-        hoverStateEnabled={false}
+        items={navigation}
+        itemRender={renderItem}
+        hoverStateEnabled={true}
         activeStateEnabled={false}
-        focusStateEnabled={false}
-        className="text-xl"
-        onItemClick={(e: ItemClickEvent) => navigate(e.itemData.path)}
+        focusStateEnabled={true}
       />
     </div>
   )
