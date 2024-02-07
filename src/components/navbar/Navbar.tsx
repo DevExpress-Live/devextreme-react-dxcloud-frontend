@@ -1,12 +1,11 @@
 import { useNavigate, Link } from "react-router-dom";
-import Toolbar, { Item } from 'devextreme-react/toolbar';
-import { ItemClickEvent } from 'devextreme/ui/toolbar';
+import Toolbar, { Item, ToolbarTypes } from 'devextreme-react/toolbar';
 import "./Navbar.css";
 
 const Navbar = () => {
   const navigate = useNavigate();
 
-  const onItemClick = (e: ItemClickEvent) => {
+  const onItemClick = (e: ToolbarTypes.ItemClickEvent) => {
     if (e.itemData?.options.text) {
       if (e.itemData.options.text !== 'Home') {
         navigate(`/${e.itemData.options.text.toLowerCase()}`);
