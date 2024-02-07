@@ -4,7 +4,7 @@ import ProductCard from "../components/ProductCard";
 const data = [
   {
     name: "Vitual Machines",
-    description: "Empower your digital projects with the flexibility and performance of our Virtual Private Servers (VPS). Ideal for businesses, developers, and demanding applications, our VPS hosting provides dedicated resources within a virtualized environment. Customize your server configurations, install the software you need, and enjoy the benefits of dedicated computing power without the cost of a physical server. ",
+    description: "Empower your digital projects with the performance of our Virtual Private Servers (VPS). Ideal for businesses, developers, and demanding applications, our VPS hosting provides dedicated resources within a virtualized environment. Customize server configurations, install software you need, and enjoy dedicated computing power without the cost of a physical server. ",
     image: "https://picsum.photos/id/10/800/300",
   },
   {
