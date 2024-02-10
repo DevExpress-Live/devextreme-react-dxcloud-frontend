@@ -1,5 +1,5 @@
 import { useNavigate, Link } from "react-router-dom";
-import Toolbar, { Item, ToolbarTypes } from 'devextreme-react/toolbar';
+import Toolbar, { Item, ToolbarTypes } from "devextreme-react/toolbar";
 import "./Navbar.css";
 
 const Navbar = () => {
@@ -7,26 +7,21 @@ const Navbar = () => {
 
   const onItemClick = (e: ToolbarTypes.ItemClickEvent) => {
     if (e.itemData?.options.text) {
-      if (e.itemData.options.text !== 'Home') {
+      if (e.itemData.options.text !== "Home") {
         navigate(`/${e.itemData.options.text.toLowerCase()}`);
       } else {
-        navigate('/');
+        navigate("/");
       }
     } else {
-      navigate('/');
+      navigate("/");
     }
-  }
+  };
 
   return (
     <div className="p-2 mx-4 md:p-4 shadow-md">
-      <Toolbar
-        onItemClick={onItemClick}
-      >
-        <Item
-          location="before"
-          options={homeOptions}
-        >
-          <Link to='/'>
+      <Toolbar onItemClick={onItemClick}>
+        <Item location="before" options={homeOptions}>
+          <Link to="/">
             <h1 className="pr-2">DxCloud</h1>
           </Link>
         </Item>
@@ -72,34 +67,33 @@ const Navbar = () => {
 };
 
 const homeOptions = {
-  text: 'Home',
-  stylingMode: 'text',
+  text: "Home",
+  stylingMode: "text",
 };
 
 const aboutOptions = {
-  text: 'About',
-  stylingMode: 'text',
+  text: "About",
+  stylingMode: "text",
 };
 
 const contactOptions = {
-  text: 'Contact',
-  stylingMode: 'text',
+  text: "Contact",
+  stylingMode: "text",
 };
 
 const productsOptions = {
-  text: 'Products',
-  stylingMode: 'text',
+  text: "Products",
+  stylingMode: "text",
 };
 
 const pricingOptions = {
-  text: 'Pricing',
-  stylingMode: 'text',
+  text: "Pricing",
+  stylingMode: "text",
 };
 
 const logInOptions = {
-  text: 'Login',
-  stylingMode: 'text',
-}
-
+  text: "Login",
+  stylingMode: "text",
+};
 
 export default Navbar;

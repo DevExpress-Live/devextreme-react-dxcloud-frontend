@@ -2,16 +2,31 @@ import { useState, useMemo, useRef, useCallback } from "react";
 import { useNavigate, Link, Outlet } from "react-router-dom";
 import { Drawer } from "devextreme-react/drawer";
 import { Toolbar } from "devextreme-react/toolbar";
-import List from 'devextreme-react/list';
+import List from "devextreme-react/list";
 
 import "./dashboard.css";
 
 const navigation = [
   { id: 1, text: "Dashboard", icon: "home", path: "/dashboard" },
   { id: 2, text: "Profile", icon: "user", path: "/dashboard/profile" },
-  { id: 3, text: "Cloud Storage", icon: "product", path: "/dashboard/cloud-storage" },
-  { id: 4, text: "Virtual Machines", icon: "product", path: "/dashboard/virtual-machines" },
-  { id: 5, text: "Web Hosting", icon: "product", path: "/dashboard/web-hosting" },
+  {
+    id: 3,
+    text: "Cloud Storage",
+    icon: "product",
+    path: "/dashboard/cloud-storage",
+  },
+  {
+    id: 4,
+    text: "Virtual Machines",
+    icon: "product",
+    path: "/dashboard/virtual-machines",
+  },
+  {
+    id: 5,
+    text: "Web Hosting",
+    icon: "product",
+    path: "/dashboard/web-hosting",
+  },
   { id: 6, text: "Support", icon: "info", path: "/dashboard/support" },
 ];
 
@@ -22,41 +37,44 @@ const Dashboard = () => {
   const windowSize = useRef([window.innerWidth, window.innerHeight]);
 
   const logout = useCallback(() => {
-    localStorage.removeItem('token');
-    navigate('/login');
-  }, [navigate])
+    localStorage.removeItem("token");
+    navigate("/login");
+  }, [navigate]);
 
-  const toolbarItems = useMemo(() => [
-    {
-      widget: 'dxButton',
-      location: 'before',
-      options: {
-        icon: 'menu',
-        stylingMode: 'text',
-        onClick: () => setOpened(!opened),
+  const toolbarItems = useMemo(
+    () => [
+      {
+        widget: "dxButton",
+        location: "before",
+        options: {
+          icon: "menu",
+          stylingMode: "text",
+          onClick: () => setOpened(!opened),
+        },
       },
-    },
-    {
-      widget: 'dxButton',
-      location: 'before',
-      options: {
-        icon: 'home',
-        stylingMode: 'text',
-        text: 'Home',
-        onClick: () => navigate('/'),
+      {
+        widget: "dxButton",
+        location: "before",
+        options: {
+          icon: "home",
+          stylingMode: "text",
+          text: "Home",
+          onClick: () => navigate("/"),
+        },
       },
-    },
-    {
-      widget: 'dxButton',
-      location: 'after',
-      options: {
-        icon: 'runner',
-        stylingMode: 'text',
-        text: 'Logout ',
-        onClick: () => logout(),
+      {
+        widget: "dxButton",
+        location: "after",
+        options: {
+          icon: "runner",
+          stylingMode: "text",
+          text: "Logout ",
+          onClick: () => logout(),
+        },
       },
-    }
-  ], [opened, logout, navigate]);
+    ],
+    [opened, logout, navigate],
+  );
 
   return (
     <div className="">
@@ -70,11 +88,13 @@ const Dashboard = () => {
         height={windowSize.current[1]}
         className="bg-[#16232e]"
       >
-        <Outlet />
+        <div>
+          <Outlet />
+        </div>
       </Drawer>
     </div>
   );
-}
+};
 
 const NavigationMenu = () => {
   type Data = {
@@ -82,12 +102,12 @@ const NavigationMenu = () => {
     path: string;
     text: string;
     icon: string;
-  }
+  };
 
   const renderItem = useCallback((data: Data) => {
     return (
       <div>
-        <Link to={data.path} reloadDocument>
+        <Link to={data.path}>
           <div>
             <div className="dx-list-item-icon-container">
               <i className={`dx-icon dx-list-item-icon dx-icon-${data.icon}`} />
@@ -99,7 +119,7 @@ const NavigationMenu = () => {
     );
   }, []);
   return (
-    <div className="bg-[#141e28] min-h-full" style={{ width: '250px' }}>
+    <div className="bg-[#141e28] min-h-full" style={{ width: "250px" }}>
       <List
         items={navigation}
         itemRender={renderItem}
@@ -108,7 +128,7 @@ const NavigationMenu = () => {
         focusStateEnabled={true}
       />
     </div>
-  )
-}
+  );
+};
 
 export default Dashboard;

@@ -1,17 +1,23 @@
-import { Form, SimpleItem, GroupItem, Label, ButtonItem, ButtonOptions } from 'devextreme-react/form';
+import {
+  Form,
+  SimpleItem,
+  GroupItem,
+  Label,
+  ButtonItem,
+  ButtonOptions,
+} from "devextreme-react/form";
 
 const profileInfo = {
-  firstName: 'John',
-  lastName: 'Doe',
-  address: '300 N. Brand Blvd.',
-  city: 'Glendale',
-  state: 'CA',
-  zip: '91203',
-  email: 'jd@mail.com'
-}
+  firstName: "John",
+  lastName: "Doe",
+  address: "300 N. Brand Blvd.",
+  city: "Glendale",
+  state: "CA",
+  zip: "91203",
+  email: "jd@mail.com",
+};
 
 const DashboardProfile = () => {
-
   return (
     <div>
       <h1 className="m-4">Profile</h1>
@@ -68,6 +74,6 @@ const DashboardProfile = () => {
       </div>
     </div>
   );
-}
+};
 
 export default DashboardProfile;

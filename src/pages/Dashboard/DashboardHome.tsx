@@ -7,7 +7,9 @@ type TotalNodes = {
 };
 
 const DashboardHome = () => {
-  const [totalNodes, setTotalNodes] = useState<Array<TotalNodes>>([{ type: "", total: 0 }]);
+  const [totalNodes, setTotalNodes] = useState<Array<TotalNodes>>([
+    { type: "", total: 0 },
+  ]);
 
   useEffect(() => {
     const getData = async () => {
@@ -16,7 +18,7 @@ const DashboardHome = () => {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
-          }
+          },
         });
         const data = await response.json();
         setTotalNodes(data.totalNodes);
@@ -24,7 +26,7 @@ const DashboardHome = () => {
       } catch (error) {
         console.log(error);
       }
-    }
+    };
     getData();
   }, []);
 
@@ -34,6 +36,6 @@ const DashboardHome = () => {
       <TotalNodesChart totalNodes={totalNodes} />
     </div>
   );
-}
+};
 
 export default DashboardHome;

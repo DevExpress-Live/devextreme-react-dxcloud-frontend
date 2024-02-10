@@ -6,8 +6,8 @@ import PieChart, {
   Size,
   Export,
   Title,
-  Font
-} from 'devextreme-react/pie-chart';
+  Font,
+} from "devextreme-react/pie-chart";
 
 type TotalNodes = {
   type: string;
@@ -29,16 +29,19 @@ const TotalNodesChart = ({ totalNodes }: { totalNodes: TotalNodes[] }) => {
           <Connector visible={true} width={1} />
         </Label>
       </Series>
-      <Legend visible={true} verticalAlignment="bottom" horizontalAlignment="center" />
+      <Legend
+        visible={true}
+        verticalAlignment="bottom"
+        horizontalAlignment="center"
+      />
       <Size width={400} />
       <Export enabled={true} />
     </PieChart>
-  )
-}
+  );
+};
 
-const formatLabel = (arg: { argumentText: string; valueText: string; }) => {
+const formatLabel = (arg: { argumentText: string; valueText: string }) => {
   return `${arg.argumentText}: ${arg.valueText}`;
-}
+};
 
 export default TotalNodesChart;
-

@@ -46,16 +46,16 @@ const ContactForm = () => {
             <EmailRule message="Email is invalid" />
             <Label text="Email" />
           </Item>
-          <Item dataField="message" editorType="dxTextArea" editorOptions={messageOptions}>
+          <Item
+            dataField="message"
+            editorType="dxTextArea"
+            editorOptions={messageOptions}
+          >
             <RequiredRule message="Message is required" />
             <Label text="Message" />
           </Item>
           <ButtonItem>
-            <ButtonOptions
-              width="100%"
-              type="default"
-              useSubmitBehavior={true}
-            >
+            <ButtonOptions width="100%" type="default" useSubmitBehavior={true}>
               Submit
             </ButtonOptions>
           </ButtonItem>

@@ -1,10 +1,10 @@
-import Button from 'devextreme-react/button';
+import Button from "devextreme-react/button";
 
 type ProductCardProps = {
   name: string;
   description: string;
   imageURL: string;
-}
+};
 
 const ProductCard = (props: ProductCardProps) => {
   return (
@@ -23,6 +23,6 @@ const ProductCard = (props: ProductCardProps) => {
       />
     </div>
   );
-}
+};
 
 export default ProductCard;

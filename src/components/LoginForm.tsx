@@ -41,7 +41,7 @@ const LoginForm = () => {
             at: "center top",
             offset: "0 100",
           },
-        })
+        });
       }
     } catch (error) {
       console.log(error);
