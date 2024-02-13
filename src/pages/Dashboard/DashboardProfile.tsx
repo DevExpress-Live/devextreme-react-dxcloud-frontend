@@ -1,3 +1,4 @@
+import { useCallback, useState } from "react";
 import {
   Form,
   SimpleItem,
@@ -6,6 +7,7 @@ import {
   ButtonItem,
   ButtonOptions,
 } from "devextreme-react/form";
+import { Popup } from "devextreme-react/popup";
 
 const profileInfo = {
   firstName: "John",
@@ -18,10 +20,21 @@ const profileInfo = {
 };
 
 const DashboardProfile = () => {
+  const [popupVisible, setPopupVisible] = useState<boolean>(false);
+
+  const showPaymentPopup = useCallback(() => {
+    setPopupVisible(true);
+  }, [setPopupVisible]);
+
+  const hide = useCallback(() => {
+    setPopupVisible(false);
+  }, [setPopupVisible]);
+
+
   return (
     <div>
       <h1 className="m-4">Profile</h1>
-      <div className="md:flex md:flex-row w-[90%] md:w-[1000px] justify-center ">
+      <div className="flex flex-col md:flex md:flex-row w-full md:w-[1000px]">
         <Form formData={profileInfo} className="w-full mx-8">
           <GroupItem caption="Personal Info">
             <SimpleItem dataField="firstName" editorType="dxTextBox">
@@ -67,13 +80,49 @@ const DashboardProfile = () => {
           </GroupItem>
           <GroupItem caption="Payment Info">
             <ButtonItem>
-              <ButtonOptions width="100%" text="Change Payment" />
+              <ButtonOptions width="100%" text="Change Payment" onClick={showPaymentPopup} />
             </ButtonItem>
           </GroupItem>
         </Form>
       </div>
+      <Popup
+        width={500}
+        height={450}
+        visible={popupVisible}
+        onHiding={hide}
+        hideOnOutsideClick={true}
+        showCloseButton={true}
+        title="Change Payment Info"
+      >
+        <div>
+          <Form formData={profileInfo}>
+            <GroupItem caption="Payment Info">
+              <SimpleItem dataField="cardType" editorType="dxSelectBox" editorOptions={cardTypeEditorOptions}>
+                <Label text="Card Type" />
+              </SimpleItem>
+              <SimpleItem dataField="cardNumber" editorType="dxTextBox">
+                <Label text="Card Number" />
+              </SimpleItem>
+              <SimpleItem dataField="expDate" editorType="dxTextBox">
+                <Label text="Exp Date" />
+              </SimpleItem>
+              <SimpleItem dataField="cvv" editorType="dxTextBox">
+                <Label text="CVV" />
+              </SimpleItem>
+              <ButtonItem>
+                <ButtonOptions width="100%" text="Save" />
+              </ButtonItem>
+            </GroupItem>
+          </Form>
+        </div>
+      </Popup>
     </div>
   );
+};
+
+const cardTypeEditorOptions = {
+  items: ["Visa", "MasterCard", "American Express", "Discover"],
+  value: "Visa",
 };
 
 export default DashboardProfile;

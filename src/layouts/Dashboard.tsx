@@ -34,7 +34,6 @@ const Dashboard = () => {
   const navigate = useNavigate();
 
   const [opened, setOpened] = useState(true);
-  const windowSize = useRef([window.innerWidth, window.innerHeight]);
 
   const logout = useCallback(() => {
     localStorage.removeItem("token");
@@ -75,7 +74,6 @@ const Dashboard = () => {
     ],
     [opened, logout, navigate],
   );
-
   return (
     <div className="">
       <Toolbar items={toolbarItems} className="shadow-md" />
@@ -85,10 +83,10 @@ const Dashboard = () => {
         openedStateMode="push"
         revealMode="expand"
         position="left"
-        height={windowSize.current[1]}
         className="bg-[#16232e]"
+        height="inherit"
       >
-        <div>
+        <div className="min-h-screen">
           <Outlet />
         </div>
       </Drawer>
