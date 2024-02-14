@@ -32,7 +32,8 @@ const DashboardHome = () => {
 
   return (
     <div>
-      <h1 className="p-4">Dashboard</h1>
+      <h1 className="m-4">Dashboard</h1>
+      <hr className="h-1 m-4 bg-gray-700 border-0 rounded" />
       <TotalNodesChart totalNodes={totalNodes} />
     </div>
   );

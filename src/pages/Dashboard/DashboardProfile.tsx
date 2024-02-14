@@ -34,6 +34,7 @@ const DashboardProfile = () => {
   return (
     <div>
       <h1 className="m-4">Profile</h1>
+      <hr className="h-1 m-4 bg-gray-700 border-0 rounded" />
       <div className="flex flex-col md:flex md:flex-row w-full md:w-[1000px]">
         <Form formData={profileInfo} className="w-full mx-8">
           <GroupItem caption="Personal Info">
@@ -86,8 +87,8 @@ const DashboardProfile = () => {
         </Form>
       </div>
       <Popup
-        width={500}
-        height={450}
+        width={400}
+        height={500}
         visible={popupVisible}
         onHiding={hide}
         hideOnOutsideClick={true}
@@ -95,7 +96,7 @@ const DashboardProfile = () => {
         title="Change Payment Info"
       >
         <div>
-          <Form formData={profileInfo}>
+          <Form>
             <GroupItem caption="Payment Info">
               <SimpleItem dataField="cardType" editorType="dxSelectBox" editorOptions={cardTypeEditorOptions}>
                 <Label text="Card Type" />

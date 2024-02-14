@@ -1,4 +1,4 @@
-import { useState, useMemo, useRef, useCallback } from "react";
+import { useState, useMemo, useCallback } from "react";
 import { useNavigate, Link, Outlet } from "react-router-dom";
 import { Drawer } from "devextreme-react/drawer";
 import { Toolbar } from "devextreme-react/toolbar";
@@ -32,7 +32,6 @@ const navigation = [
 
 const Dashboard = () => {
   const navigate = useNavigate();
-
   const [opened, setOpened] = useState(true);
 
   const logout = useCallback(() => {
@@ -74,8 +73,9 @@ const Dashboard = () => {
     ],
     [opened, logout, navigate],
   );
+
   return (
-    <div className="">
+    <div id="drawer">
       <Toolbar items={toolbarItems} className="shadow-md" />
       <Drawer
         component={NavigationMenu}
@@ -86,7 +86,7 @@ const Dashboard = () => {
         className="bg-[#16232e]"
         height="inherit"
       >
-        <div className="min-h-screen">
+        <div id="content" className="content min-h-screen">
           <Outlet />
         </div>
       </Drawer>

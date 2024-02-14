@@ -10,6 +10,7 @@ import Login from "./pages/Login";
 import Dashboard from "./layouts/Dashboard";
 import DashboardHome from "./pages/Dashboard/DashboardHome";
 import DashboardProfile from "./pages/Dashboard/DashboardProfile";
+import DashboardCloudStorage from "./pages/Dashboard/DashboardCloudStorage";
 
 const App = () => {
   return (
@@ -23,6 +24,7 @@ const App = () => {
       <Route path="/dashboard" element={<Dashboard />}>
         <Route index element={<DashboardHome />} />
         <Route path="profile" element={<DashboardProfile />} />
+        <Route path="cloud-storage" element={<DashboardCloudStorage />} />
       </Route>
     </Routes>
   );
