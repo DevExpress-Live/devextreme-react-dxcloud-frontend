@@ -64,7 +64,7 @@ const Dashboard = () => {
         widget: "dxButton",
         location: "after",
         options: {
-          icon: "runner",
+          icon: "user",
           stylingMode: "text",
           text: "Logout ",
           onClick: () => logout(),
