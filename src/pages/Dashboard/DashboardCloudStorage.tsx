@@ -97,7 +97,7 @@ const DashboardCloudStorage = () => {
   }, []);
 
   const createNewButtonClick = () => {
-    navigate(`/cloud-storage/create-new`);
+    navigate(`create-new`);
   }
 
 
@@ -154,7 +154,7 @@ const GridButton = (cellData: DataGridTypes.ColumnCellTemplateData) => {
       stylingMode="outlined"
       type="default"
       onClick={() => {
-        navigate(`/cloud-storage/${cellData.data.id}`);
+        navigate(`dashboard/cloud-storage/${cellData.data.id}`);
       }}
     >
       View More

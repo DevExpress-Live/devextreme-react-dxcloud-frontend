@@ -11,7 +11,9 @@ import Dashboard from "./layouts/Dashboard";
 import DashboardHome from "./pages/Dashboard/DashboardHome";
 import DashboardProfile from "./pages/Dashboard/DashboardProfile";
 import DashboardCloudStorage from "./pages/Dashboard/DashboardCloudStorage";
+import AddCloudStorage from "./pages/Dashboard/AddCloudStorage";
 import DashboardVirtualMachines from "./pages/Dashboard/DashboardVirtualMachines";
+import DashboardSupport from "./pages/Dashboard/DashboardSupport";
 
 const App = () => {
   return (
@@ -26,7 +28,9 @@ const App = () => {
         <Route index element={<DashboardHome />} />
         <Route path="profile" element={<DashboardProfile />} />
         <Route path="cloud-storage" element={<DashboardCloudStorage />} />
+        <Route path="cloud-storage/create-new" element={<AddCloudStorage />} />
         <Route path="virtual-machines" element={<DashboardVirtualMachines />} />
+        <Route path="support" element={<DashboardSupport />} />
       </Route>
     </Routes>
   );
